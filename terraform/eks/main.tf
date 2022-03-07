@@ -34,4 +34,7 @@ module "eks_cluster" {
 
   #namespaces
   namespaces = var.namespaces
+
+  #grafana
+  grafana_password = var.grafana_password
 }
