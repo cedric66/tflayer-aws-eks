@@ -1,7 +1,4 @@
-variable "cluster_name" {
-  type        = string
-  description = "EKS cluster name."
-}
+#vpc
 variable "iac_environment_tag" {
   type        = string
   description = "AWS tag to indicate environment name of each infrastructure object."
@@ -75,4 +72,38 @@ variable "spot_termination_handler_chart_version" {
 variable "spot_termination_handler_chart_namespace" {
   type        = string
   description = "Kubernetes namespace to deploy EKS Spot termination handler Helm chart."
+}
+
+#Load Balancer
+variable "dns_base_domain" {
+  type        = string
+  description = "DNS Zone name to be used from EKS Ingress."
+}
+variable "ingress_gateway_chart_name" {
+  type        = string
+  description = "Ingress Gateway Helm chart name."
+}
+variable "ingress_gateway_chart_repo" {
+  type        = string
+  description = "Ingress Gateway Helm repository name."
+}
+variable "ingress_gateway_chart_version" {
+  type        = string
+  description = "Ingress Gateway Helm chart version."
+}
+variable "ingress_gateway_annotations" {
+  type        = map(string)
+  description = "Ingress Gateway Annotations required for EKS."
+}
+
+#subdomains
+variable "deployments_subdomains" {
+  type        = list(string)
+  description = "List of subdomains to be routed to Kubernetes Services."
+}
+
+#namespaces
+variable "namespaces" {
+  type        = list(string)
+  description = "List of namespaces to be created in our EKS Cluster."
 }
